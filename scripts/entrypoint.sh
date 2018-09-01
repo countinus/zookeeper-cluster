@@ -94,4 +94,5 @@ else
     rm /usr/local/bin/HEALTHY
 fi
 
+# Default entrypoint (from the parent image)
 exec sh /docker-entrypoint.sh "$@"

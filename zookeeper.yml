@@ -1,0 +1,34 @@
+version: "3.5"
+
+services:
+
+  zookeeper:
+    image: countinus/zookeeper:3.5
+    networks:
+    - ensemble
+    ports:
+    - mode: host
+      target: 2181
+      published: 2181
+    volumes:
+    - zoo-logs:/datalog
+    - zoo-data:/data
+    environment:
+      SERVICE_NAME: zookeeper
+    deploy:
+      mode: replicated
+      replicas: 3
+      resources:
+        limits:
+          cpus: ".2"
+          memory: "256M"
+      restart_policy:
+        condition: any
+
+volumes:
+  zoo-logs:
+  zoo-data:
+
+networks:
+  ensemble:
+    driver: overlay
