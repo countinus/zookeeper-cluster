@@ -56,6 +56,8 @@ else
     echo "skipACL=$ZOO_SKIP_ACL" >> "$CONFIG"
     echo "dynamicConfigFile=$ZOO_DYNAMIC_CONFIG_FILE" >> "$CONFIG"
 
+    echo "4lw.commands.whitelist=ruok,conf,cons" >> "$CONFIG"
+
     echo $ZOO_MY_ID >> $ZOO_DATA_DIR/myid
 
     su -c 'touch $ZOO_DYNAMIC_CONFIG_FILE' $ZOO_USER
